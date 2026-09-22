@@ -456,6 +456,60 @@ a {
         space-between;
 }
 
+/* ================= TARGET ROLE SELECTOR ================= */
+
+.role-selector-label {
+
+    display: block;
+
+    margin-top: 22px;
+
+    font-size: 10px;
+
+    letter-spacing: .15em;
+
+    color: #888;
+}
+
+
+.role-selector {
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 12px 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: #f8f8f4;
+
+    color: #111;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.role-selector:focus {
+
+    border-color: #111;
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,.05);
+}
+
 
 .box-label {
 

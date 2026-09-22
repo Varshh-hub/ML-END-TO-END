@@ -92,27 +92,6 @@
 
     </div>
 
-
-    <div class="hero-side">
-
-        <div class="floating-card">
-
-            <p>
-                PREDICTED MATCH
-            </p>
-
-            <strong>
-                87%
-            </strong>
-
-            <span>
-                Example analysis
-            </span>
-
-        </div>
-
-    </div>
-
 </section>
 
 
@@ -137,7 +116,7 @@
         </h2>
 
         <p>
-            Upload your resume and paste the complete
+            Upload your resume, select the target role and paste the complete
             job description to begin the analysis.
         </p>
 
@@ -204,6 +183,84 @@
                     <h3>
                         Paste the job requirements
                     </h3>
+
+                    <label
+                        class="role-selector-label"
+                        for="targetRole"
+                    >
+                        SELECT TARGET ROLE
+                    </label>
+
+                    <select
+                        id="targetRole"
+                        class="role-selector"
+                    >
+
+                        <option value="">
+                            Select the role you want to apply for
+                        </option>
+
+                        <option value="Associate Product Manager">
+                            Associate Product Manager
+                        </option>
+
+                        <option value="BI Analyst">
+                            BI Analyst
+                        </option>
+
+                        <option value="Business Analyst">
+                            Business Analyst
+                        </option>
+
+                        <option value="Computer Vision Engineer">
+                            Computer Vision Engineer
+                        </option>
+
+                        <option value="Cybersecurity Analyst">
+                            Cybersecurity Analyst
+                        </option>
+
+                        <option value="Data Analyst">
+                            Data Analyst
+                        </option>
+
+                        <option value="Data Scientist">
+                            Data Scientist
+                        </option>
+
+                        <option value="DevOps Engineer">
+                            DevOps Engineer
+                        </option>
+
+                        <option value="Generative AI Engineer">
+                            Generative AI Engineer
+                        </option>
+
+                        <option value="Machine Learning Engineer">
+                            Machine Learning Engineer
+                        </option>
+
+                        <option value="NLP Engineer">
+                            NLP Engineer
+                        </option>
+
+                        <option value="Performance Marketer">
+                            Performance Marketer
+                        </option>
+
+                        <option value="Product Manager">
+                            Product Manager
+                        </option>
+
+                        <option value="Software Engineer">
+                            Software Engineer
+                        </option>
+
+                        <option value="Technical Product Manager">
+                            Technical Product Manager
+                        </option>
+
+                    </select>
 
                 </div>
 
@@ -327,9 +384,11 @@ Requirements:
         <div class="score-circle">
 
             <div class="score-number">
+
                 <span id="score">
                     0
                 </span>%
+
             </div>
 
             <p>
@@ -515,12 +574,12 @@ Requirements:
             </span>
 
             <h3>
-                Compare
+                Select
             </h3>
 
             <p>
-                Paste the job description you want
-                to apply for.
+                Select the supported role you want
+                to apply for and paste the job description.
             </p>
 
         </div>
