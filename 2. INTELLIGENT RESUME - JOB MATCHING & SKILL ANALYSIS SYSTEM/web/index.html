@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -15,14 +16,17 @@
 
     <link
         rel="stylesheet"
-        href="{{ url_for('static', filename='styles.css') }}"
+        href="/styles.css"
     >
-</head>
 
+</head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- =========================================================
+NAVIGATION
+========================================================= -->
 
 <nav class="navbar">
 
@@ -40,16 +44,29 @@
             Analyzer
         </a>
 
+        <a href="#ai-intelligence">
+            AI Intelligence
+        </a>
+
         <a href="#how-it-works">
             How It Works
         </a>
 
     </div>
 
+    <a
+        href="#analyzer"
+        class="nav-button"
+    >
+        Analyze Resume
+    </a>
+
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================================================
+HERO
+========================================================= -->
 
 <section
     class="hero"
@@ -59,35 +76,29 @@
     <div class="hero-content">
 
         <p class="eyebrow">
-            MACHINE LEARNING × CAREER INTELLIGENCE
+            MACHINE LEARNING × GENERATIVE AI × CAREER INTELLIGENCE
         </p>
 
         <h1>
-            Resume
-            <span>meets</span>
-            the right job.
+            Resume meets
+            <span>the right job.</span>
         </h1>
 
         <p class="hero-description">
 
-            Analyze your resume against a job description,
-            discover missing skills and understand your
-            predicted first-stage screening alignment.
+            ResumeMatch combines machine learning,
+            skill intelligence and generative AI to
+            understand how well your resume aligns
+            with a target role.
 
         </p>
-
 
         <a
             href="#analyzer"
             class="primary-button"
         >
-
             Analyze My Resume
-
-            <span>
-                →
-            </span>
-
+            <span>→</span>
         </a>
 
     </div>
@@ -95,8 +106,9 @@
 </section>
 
 
-
-<!-- ================= ANALYZER ================= -->
+<!-- =========================================================
+RESUME ANALYZER
+========================================================= -->
 
 <section
     class="analyzer"
@@ -106,18 +118,19 @@
     <div class="section-title">
 
         <p class="eyebrow">
-            01 / ANALYZE
+            01 / RESUME ANALYZER
         </p>
 
         <h2>
-            Resume × Job
+            Understand
             <br>
-            Matching
+            your fit.
         </h2>
 
         <p>
-            Upload your resume, select the target role and paste the complete
-            job description to begin the analysis.
+            Upload your resume, choose your target role
+            and provide a job description to generate
+            a detailed AI-powered analysis.
         </p>
 
     </div>
@@ -126,46 +139,41 @@
     <div class="input-container">
 
 
-        <!-- RESUME -->
+        <!-- PDF UPLOAD -->
 
         <div
             class="upload-box"
             id="uploadBox"
         >
 
-            <input
-                type="file"
-                id="resumeInput"
-                accept=".pdf"
-                hidden
-            >
-
-
             <div class="upload-icon">
                 ↑
             </div>
 
-
             <h3>
-                Upload your resume
+                Upload Resume
             </h3>
-
 
             <p id="fileText">
                 PDF format · Maximum 10 MB
             </p>
 
-
-            <button
-                type="button"
+            <label
+                class="secondary-button file-picker-button"
                 id="chooseFile"
-                class="secondary-button"
+                for="resumeInput"
             >
-                Choose Resume
-            </button>
+                Choose PDF
+            </label>
+
+            <input
+                type="file"
+                id="resumeInput"
+                accept=".pdf,application/pdf"
+                hidden
+            >
 
         </div>
-
 
 
         <!-- JOB DESCRIPTION -->
@@ -176,131 +184,127 @@
 
                 <div>
 
-                    <p class="box-label">
-                        JOB DESCRIPTION
-                    </p>
+                    <span class="box-label">
+                        TARGET ROLE
+                    </span>
 
                     <h3>
-                        Paste the job requirements
+                        Job Intelligence
                     </h3>
-
-                    <label
-                        class="role-selector-label"
-                        for="targetRole"
-                    >
-                        SELECT TARGET ROLE
-                    </label>
-
-                    <select
-                        id="targetRole"
-                        class="role-selector"
-                    >
-
-                        <option value="">
-                            Select the role you want to apply for
-                        </option>
-
-                        <option value="Associate Product Manager">
-                            Associate Product Manager
-                        </option>
-
-                        <option value="BI Analyst">
-                            BI Analyst
-                        </option>
-
-                        <option value="Business Analyst">
-                            Business Analyst
-                        </option>
-
-                        <option value="Computer Vision Engineer">
-                            Computer Vision Engineer
-                        </option>
-
-                        <option value="Cybersecurity Analyst">
-                            Cybersecurity Analyst
-                        </option>
-
-                        <option value="Data Analyst">
-                            Data Analyst
-                        </option>
-
-                        <option value="Data Scientist">
-                            Data Scientist
-                        </option>
-
-                        <option value="DevOps Engineer">
-                            DevOps Engineer
-                        </option>
-
-                        <option value="Generative AI Engineer">
-                            Generative AI Engineer
-                        </option>
-
-                        <option value="Machine Learning Engineer">
-                            Machine Learning Engineer
-                        </option>
-
-                        <option value="NLP Engineer">
-                            NLP Engineer
-                        </option>
-
-                        <option value="Performance Marketer">
-                            Performance Marketer
-                        </option>
-
-                        <option value="Product Manager">
-                            Product Manager
-                        </option>
-
-                        <option value="Software Engineer">
-                            Software Engineer
-                        </option>
-
-                        <option value="Technical Product Manager">
-                            Technical Product Manager
-                        </option>
-
-                    </select>
 
                 </div>
 
                 <span>
-                    02
+                    AI ANALYSIS
                 </span>
 
             </div>
 
 
+            <label
+                class="role-selector-label"
+                for="targetRole"
+            >
+                SELECT TARGET ROLE
+            </label>
+
+
+            <select
+                id="targetRole"
+                class="role-selector"
+            >
+
+                <option value="">
+                    Select a target role
+                </option>
+
+                <option>
+                    Associate Product Manager
+                </option>
+
+                <option>
+                    BI Analyst
+                </option>
+
+                <option>
+                    Backend Engineer
+                </option>
+
+                <option>
+                    Business Analyst
+                </option>
+
+                <option>
+                    Computer Vision Engineer
+                </option>
+
+                <option>
+                    Cybersecurity Analyst
+                </option>
+
+                <option>
+                    Data Analyst
+                </option>
+
+                <option>
+                    Data Scientist
+                </option>
+
+                <option>
+                    DevOps Engineer
+                </option>
+
+                <option>
+                    Generative AI Engineer
+                </option>
+
+                <option>
+                    Machine Learning Engineer
+                </option>
+
+                <option>
+                    NLP Engineer
+                </option>
+
+                <option>
+                    Performance Marketer
+                </option>
+
+                <option>
+                    Product Manager
+                </option>
+
+                <option>
+                    Software Engineer
+                </option>
+
+                <option>
+                    Technical Product Manager
+                </option>
+
+            </select>
+
+
             <textarea
                 id="jobDescription"
-                placeholder="Paste the complete job description here...
-
-Example:
-
-Machine Learning Engineer
-Requirements:
-• Python
-• SQL
-• Machine Learning
-• Scikit-learn
-• Flask
-• Data preprocessing
-..."
+                maxlength="12000"
+                placeholder="Paste the job description here..."
             ></textarea>
 
 
             <div class="character-count">
 
-                <span id="characterCount">
-                    0 characters
+                <span id="charCount">
+                    0
                 </span>
+
+                / 12000
 
             </div>
 
         </div>
 
     </div>
-
 
 
     <!-- ERROR -->
@@ -311,24 +315,23 @@ Requirements:
     ></div>
 
 
-
     <!-- ANALYZE -->
 
     <button
         class="analyze-button"
         id="analyzeButton"
+        type="button"
     >
 
-        <span id="buttonText">
+        <span>
             Analyze Resume
         </span>
 
-        <span id="buttonArrow">
+        <span>
             →
         </span>
 
     </button>
-
 
 
     <!-- LOADING -->
@@ -340,10 +343,6 @@ Requirements:
 
         <div class="loading-spinner"></div>
 
-        <h3>
-            Analyzing your application
-        </h3>
-
         <p id="loadingText">
             Reading your resume...
         </p>
@@ -353,8 +352,9 @@ Requirements:
 </section>
 
 
-
-<!-- ================= RESULTS ================= -->
+<!-- =========================================================
+MATCH RESULTS
+========================================================= -->
 
 <section
     class="results"
@@ -364,35 +364,41 @@ Requirements:
     <div class="section-title">
 
         <p class="eyebrow">
-            02 / RESULTS
+            02 / MATCH INTELLIGENCE
         </p>
 
         <h2>
-            Your Match
+            Your resume,
             <br>
-            Analysis
+            decoded.
         </h2>
+
+        <p>
+            Machine learning evaluates your profile
+            against the selected role and identifies
+            the evidence behind your match.
+        </p>
 
     </div>
 
 
-
-    <!-- SCORE -->
+    <!-- =====================================================
+    MATCH SCORE
+    ====================================================== -->
 
     <div class="score-card">
 
         <div class="score-circle">
 
-            <div class="score-number">
-
-                <span id="score">
-                    0
-                </span>%
-
-            </div>
+            <span
+                class="score-number"
+                id="score"
+            >
+                0%
+            </span>
 
             <p>
-                MATCH
+                MATCH SCORE
             </p>
 
         </div>
@@ -404,15 +410,16 @@ Requirements:
                 class="result-status"
                 id="resultStatus"
             >
-                MATCH ANALYSIS
+                ANALYSIS COMPLETE
             </div>
 
             <h3 id="resultMessage">
-                —
+                Resume analysis complete.
             </h3>
 
             <p id="resultSummary">
-                —
+                Your resume has been evaluated
+                against the selected role.
             </p>
 
         </div>
@@ -420,13 +427,64 @@ Requirements:
     </div>
 
 
+    <!-- =====================================================
+    ROLE / PROFILE INFORMATION
 
-    <!-- SKILLS -->
+    RESUME ROLE REMOVED
+    ====================================================== -->
+
+    <div class="intelligence-grid">
+
+
+        <div class="intelligence-card">
+
+            <span>
+                TARGET ROLE
+            </span>
+
+            <strong id="jobRole">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="intelligence-card">
+
+            <span>
+                SENIORITY
+            </span>
+
+            <strong id="seniority">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="intelligence-card">
+
+            <span>
+                INDUSTRY
+            </span>
+
+            <strong id="industry">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+    SKILLS
+    ====================================================== -->
 
     <div class="skills-grid">
 
 
-        <!-- MATCHED -->
+        <!-- MATCHED SKILLS -->
 
         <div class="skill-card">
 
@@ -439,10 +497,8 @@ Requirements:
             </h3>
 
             <p>
-                Skills detected in both your resume
-                and the job description.
+                Skills already supported by your resume.
             </p>
-
 
             <div
                 class="skills-list"
@@ -452,8 +508,7 @@ Requirements:
         </div>
 
 
-
-        <!-- MISSING -->
+        <!-- SKILL GAPS -->
 
         <div class="skill-card missing-card">
 
@@ -462,14 +517,13 @@ Requirements:
             </div>
 
             <h3>
-                Missing Skills
+                Skill Gaps
             </h3>
 
             <p>
-                Requirements found in the job description
+                Skills identified in the job description
                 but not detected in your resume.
             </p>
-
 
             <div
                 class="skills-list"
@@ -481,52 +535,219 @@ Requirements:
     </div>
 
 
-
-    <!-- MODEL -->
-
-    <div class="model-card">
-
-        <div>
-
-            <p>
-                MODEL USED
-            </p>
-
-            <strong id="modelName">
-                HistGradientBoosting
-            </strong>
-
-        </div>
+</section>
 
 
-        <div>
+<!-- =========================================================
+GENERATIVE AI
+========================================================= -->
 
-            <p>
-                PREDICTION
-            </p>
+<section
+    class="ai-intelligence"
+    id="ai-intelligence"
+>
 
-            <strong id="prediction">
-                —
-            </strong>
+    <div class="section-title">
 
-        </div>
+        <p class="eyebrow">
+            03 / GENERATIVE AI
+        </p>
+
+        <h2>
+            Ask beyond
+            <br>
+            the score.
+        </h2>
+
+        <p>
+            ResuMatch uses the two GenAI functions from your model:
+            detailed resume-job analysis and an interactive chat
+            grounded in the same ML result.
+        </p>
 
     </div>
 
 
+    <div class="ai-grid ai-grid-two">
 
-    <p class="disclaimer">
 
-        This is an ML-based resume–job match estimate
-        and does not guarantee recruitment or shortlisting.
+        <!-- =================================================
+        AI FEATURE 01
+        ================================================== -->
 
-    </p>
+        <article
+            class="ai-card ai-card-horizontal ai-card-large"
+        >
+
+            <div class="ai-card-index">
+
+                <span class="ai-number">
+                    AI / 01
+                </span>
+
+                <div class="ai-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <div class="ai-card-content">
+
+                <h3>
+                    ResuMatch GenAI Analysis
+                </h3>
+
+                <p>
+                    Explain the existing machine-learning result,
+                    including the match score, matching skills,
+                    missing skills, strengths, gaps and practical
+                    recommendations.
+                </p>
+
+
+                <button
+                    class="ai-button"
+                    type="button"
+                    data-ai-action="analysis"
+                >
+                    Generate AI Analysis →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+        AI FEATURE 02
+        ================================================== -->
+
+        <article
+            class="ai-card ai-card-horizontal ai-chat-card"
+        >
+
+            <div class="ai-card-index">
+
+                <span class="ai-number">
+                    AI / 02
+                </span>
+
+                <div class="ai-icon">
+                    ◎
+                </div>
+
+            </div>
+
+
+            <div class="ai-card-content">
+
+                <h3>
+                    ResuMatch Chat
+                </h3>
+
+                <p>
+                    Ask questions about your resume,
+                    job description and the completed
+                    ResuMatch analysis.
+                </p>
+
+
+                <!-- CHAT -->
+
+                <div class="ai-chat-box">
+
+
+                    <div
+                        class="ai-chat-messages"
+                        id="aiChatMessages"
+                    >
+
+                        <div class="chat-message assistant">
+
+                            <span class="chat-sender">
+                                ResuMatch
+                            </span>
+
+                            <div class="chat-bubble">
+
+                                Run the resume analysis,
+                                then ask me anything about
+                                the result.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-chat-input">
+
+                        <textarea
+                            id="aiChatQuestion"
+                            rows="2"
+                            placeholder="Ask about the match, skills, score or resume..."
+                        ></textarea>
+
+
+                        <button
+                            class="ai-button"
+                            id="aiChatSend"
+                            type="button"
+                        >
+                            Ask ResuMatch →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =====================================================
+    AI OUTPUT
+    ====================================================== -->
+
+    <div
+        class="ai-output"
+        id="aiOutput"
+    >
+
+        <div class="ai-output-header">
+
+            <span>
+                GENERATIVE AI OUTPUT
+            </span>
+
+            <button
+                id="closeAiOutput"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="ai-output-content"
+            id="aiOutputContent"
+        ></div>
+
+    </div>
 
 </section>
 
 
-
-<!-- ================= HOW IT WORKS ================= -->
+<!-- =========================================================
+HOW IT WORKS
+========================================================= -->
 
 <section
     class="how-it-works"
@@ -536,19 +757,20 @@ Requirements:
     <div class="section-title">
 
         <p class="eyebrow">
-            03 / HOW IT WORKS
+            04 / SYSTEM
         </p>
 
         <h2>
-            From resume
+            How ResumeMatch
             <br>
-            to insight.
+            thinks.
         </h2>
 
     </div>
 
 
     <div class="steps">
+
 
         <div class="step">
 
@@ -557,11 +779,12 @@ Requirements:
             </span>
 
             <h3>
-                Upload
+                Extract
             </h3>
 
             <p>
-                Upload your resume as a PDF.
+                Your PDF resume is processed and
+                transformed into structured career data.
             </p>
 
         </div>
@@ -574,12 +797,12 @@ Requirements:
             </span>
 
             <h3>
-                Select
+                Understand
             </h3>
 
             <p>
-                Select the supported role you want
-                to apply for and paste the job description.
+                Skills, role, seniority, industry and
+                experience signals are identified.
             </p>
 
         </div>
@@ -592,12 +815,12 @@ Requirements:
             </span>
 
             <h3>
-                Predict
+                Match
             </h3>
 
             <p>
-                The trained ML model analyzes the
-                resume–job relationship.
+                Machine learning evaluates the relationship
+                between your profile and the target role.
             </p>
 
         </div>
@@ -610,12 +833,12 @@ Requirements:
             </span>
 
             <h3>
-                Improve
+                Generate
             </h3>
 
             <p>
-                Identify matched and missing skills
-                before applying.
+                Generative AI can transform the analysis
+                into practical recommendations.
             </p>
 
         </div>
@@ -625,26 +848,28 @@ Requirements:
 </section>
 
 
-
-<!-- ================= FOOTER ================= -->
+<!-- =========================================================
+FOOTER
+========================================================= -->
 
 <footer>
 
-    <div>
-        VARSHA.
-    </div>
+    <span>
+        RESUMEMATCH
+    </span>
 
-    <div>
-        RESUME × JOB MATCHING SYSTEM
-    </div>
+    <span>
+        MACHINE LEARNING × GENERATIVE AI
+    </span>
+
+    <span>
+        VARSHA A
+    </span>
 
 </footer>
 
 
-
-<script
-    src="{{ url_for('static', filename='script.js') }}"
-></script>
+<script src="/script.js"></script>
 
 </body>
 

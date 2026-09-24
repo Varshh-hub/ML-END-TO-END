@@ -1,5 +1,6 @@
-Flask
-pdfplumber
-scikit-learn==1.7.2
-numpy
-gunicorn
+Flask>=3.0
+pdfplumber>=0.11
+numpy>=1.26
+joblib>=1.4
+scikit-learn>=1.4
+google-genai>=1.0
