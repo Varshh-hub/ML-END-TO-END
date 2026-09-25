@@ -3,7 +3,6 @@ import os
 import re
 import json
 import pdfplumber
-import pandas as pd
 import numpy as np
 import joblib
 import urllib.request
