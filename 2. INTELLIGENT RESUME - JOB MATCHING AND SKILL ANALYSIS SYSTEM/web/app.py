@@ -3,6 +3,7 @@ import os
 import re
 import json
 import pdfplumber
+import pandas as pd
 import numpy as np
 import joblib
 import urllib.request
@@ -659,7 +660,7 @@ def analyze():
 
     except Exception as error:
         print("\nANALYSIS ERROR:", repr(error))
-        
+
         return jsonify({
             "success": False,
             "message": f"{type(error).__name__}: {error}",
