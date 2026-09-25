@@ -147,5 +147,4 @@ gunicorn app:app
 ## Author
 
 **Varsha**
-B.Sc. Artificial Intelligence & Machine Learning
-Aspiring Machine Learning Engineer
+AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Excel | Power BI | Prompt Engineer | Front-End Developer
