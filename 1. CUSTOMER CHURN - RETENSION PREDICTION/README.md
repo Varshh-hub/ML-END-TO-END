@@ -377,7 +377,6 @@ This demonstrates practical exposure to both **machine learning development and 
 ## Project Links
 
 * **Live Application:** https://churn-retension-prediction-ml.onrender.com/
-* **GitHub Repository:** https://github.com/Varshh-hub/MACHINE-LEARNING---END-TO-END--BEST-3-
 
 ---
 
@@ -385,10 +384,4 @@ This demonstrates practical exposure to both **machine learning development and 
 
 **Varsha A.**
 
-Machine Learning | Python | Data Science | AI
-
----
-
-## License
-
-This project is intended for **educational and portfolio purposes**.
+AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Excel | Power BI | Prompt Engineer | Front-End Developer
