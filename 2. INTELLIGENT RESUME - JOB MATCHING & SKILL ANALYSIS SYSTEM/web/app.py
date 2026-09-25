@@ -1007,9 +1007,7 @@ def health():
 
 
 if __name__ == "__main__":
-    print("\n======================================")
     print("      ResumeMatch Flask Application")
-    print("======================================")
     print(f"Model: {MODEL_PATH}")
     print(f"Model: {type(model).__name__}")
     print(f"Selected features: {len(SELECTED_COLUMNS)}")
@@ -1018,7 +1016,6 @@ if __name__ == "__main__":
     print(f"GenAI backend: {'google-genai SDK' if genai is not None else 'Gemini REST API fallback'}")
     print(f"GenAI model: {GEMINI_MODEL}")
     print("Server: http://127.0.0.1:5004")
-    print("======================================\n")
 
     app.run(
         host="0.0.0.0",
