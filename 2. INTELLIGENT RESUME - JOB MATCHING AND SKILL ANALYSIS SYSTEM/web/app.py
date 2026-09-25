@@ -659,9 +659,10 @@ def analyze():
 
     except Exception as error:
         print("\nANALYSIS ERROR:", repr(error))
+        
         return jsonify({
             "success": False,
-            "message": "An error occurred while analyzing the resume.",
+            "message": f"{type(error).__name__}: {error}",
             "error": str(error)
         }), 500
 
