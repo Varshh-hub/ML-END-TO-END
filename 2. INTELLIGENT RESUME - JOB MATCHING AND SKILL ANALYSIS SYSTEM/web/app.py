@@ -17,6 +17,29 @@ except ImportError:
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# ===== Gemini key loader =====
+KEY_FILE = os.path.join(BASE_DIR, "gemini_api_key.txt")
+
+def load_gemini_key():
+    # 1. Text file beside app2.py
+    if os.path.isfile(KEY_FILE):
+        try:
+            with open(KEY_FILE, "r", encoding="utf-8") as f:
+                key = f.read().strip()
+                if key:
+                    return key, "gemini_api_key.txt"
+        except Exception as e:
+            print("Gemini key file error:", e)
+
+    # 2. Environment variable
+    key = os.getenv("GEMINI_API_KEY", "").strip()
+    if key:
+        return key, "environment"
+
+    return "", "not configured"
+
+GEMINI_API_KEY, GEMINI_KEY_SOURCE = load_gemini_key()
 MODEL_PATH = os.path.join(BASE_DIR, "resumatch_model.pkl")
 
 app = Flask(
@@ -271,6 +294,102 @@ def detect_value(text, values, default=None):
     return default
 
 
+
+# ---------------------------------------------------------------------------
+# ROBUST JD ROLE DETECTION
+# ---------------------------------------------------------------------------
+ROLE_ALIASES = {
+    "Data Scientist": ["data scientist", "data science", "data science professional", "ds role"],
+    "Data Analyst": ["data analyst", "data analytics", "business intelligence analyst", "bi analyst"],
+    "Machine Learning Engineer": ["machine learning engineer", "ml engineer", "machine learning developer"],
+    "AI Engineer": ["ai engineer", "artificial intelligence engineer", "ai developer"],
+    "Software Engineer": ["software engineer", "software developer", "application developer", "software development engineer", "sde"],
+    "Backend Engineer": ["backend engineer", "backend developer", "back-end engineer", "back-end developer"],
+    "Frontend Developer": ["frontend developer", "frontend engineer", "front-end developer", "front-end engineer"],
+    "Full Stack Developer": ["full stack developer", "full-stack developer", "full stack engineer", "full-stack engineer"],
+    "DevOps Engineer": ["devops engineer", "devops", "site reliability engineer", "sre"],
+    "Cloud Engineer": ["cloud engineer", "cloud developer", "cloud infrastructure engineer"],
+    "Data Engineer": ["data engineer", "data engineering"],
+    "NLP Engineer": ["nlp engineer", "natural language processing engineer"],
+    "Computer Vision Engineer": ["computer vision engineer", "computer vision developer", "cv engineer"],
+    "Cybersecurity Analyst": ["cybersecurity analyst", "cyber security analyst", "security analyst"],
+    "Business Analyst": ["business analyst", "business analysis"],
+    "Product Manager": ["product manager", "product management"],
+    "Technical Product Manager": ["technical product manager", "technical product management"],
+    "Associate Product Manager": ["associate product manager", "apm"],
+    "Performance Marketer": ["performance marketer", "performance marketing"],
+    "Generative AI Engineer": ["generative ai engineer", "genai engineer", "generative ai developer"],
+}
+
+ROLE_SKILL_SIGNATURES = {
+    "Data Scientist": ["python", "sql", "machine learning", "pandas", "numpy", "scikit-learn", "statistics", "predictive modeling", "data analysis"],
+    "Data Analyst": ["sql", "excel", "power bi", "tableau", "data analysis", "data visualization", "statistics"],
+    "Machine Learning Engineer": ["python", "machine learning", "scikit-learn", "pytorch", "tensorflow", "docker", "mlops"],
+    "AI Engineer": ["python", "artificial intelligence", "machine learning", "deep learning", "pytorch", "tensorflow"],
+    "Software Engineer": ["python", "java", "javascript", "c++", "software development", "git", "api"],
+    "Backend Engineer": ["python", "java", "node.js", "api", "rest", "sql", "backend"],
+    "Frontend Developer": ["javascript", "typescript", "react", "html", "css", "frontend"],
+    "Full Stack Developer": ["javascript", "react", "node.js", "html", "css", "sql"],
+    "DevOps Engineer": ["docker", "kubernetes", "jenkins", "ci/cd", "aws", "azure", "terraform"],
+    "Cloud Engineer": ["aws", "azure", "gcp", "cloud", "terraform", "kubernetes"],
+    "Data Engineer": ["sql", "python", "spark", "pyspark", "etl", "airflow", "data pipeline"],
+    "NLP Engineer": ["nlp", "natural language processing", "transformers", "bert", "python", "pytorch"],
+    "Computer Vision Engineer": ["computer vision", "opencv", "cnn", "pytorch", "tensorflow", "image processing"],
+    "Cybersecurity Analyst": ["cybersecurity", "siem", "soc", "incident response", "network security"],
+    "Business Analyst": ["business analysis", "requirements", "sql", "excel", "power bi", "stakeholder"],
+}
+
+def _phrase_present(text, phrase):
+    text = clean_input_text(text)
+    phrase = clean_input_text(phrase)
+    return bool(phrase) and bool(re.search(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", text))
+
+def detect_job_role(job_description):
+    text = clean_input_text(job_description)
+    explicit_hits = []
+    for role, aliases in ROLE_ALIASES.items():
+        for alias in aliases:
+            if _phrase_present(text, alias):
+                explicit_hits.append((len(alias), role))
+    if explicit_hits:
+        explicit_hits.sort(reverse=True)
+        return explicit_hits[0][1]
+
+    scores = {}
+    for role, skills in ROLE_SKILL_SIGNATURES.items():
+        score = sum(_phrase_present(text, skill) for skill in skills)
+        if score:
+            scores[role] = score
+    if scores:
+        ranked = sorted(scores.items(), key=lambda x: (-x[1], x[0]))
+        best_role, best_score = ranked[0]
+        second_score = ranked[1][1] if len(ranked) > 1 else 0
+        if best_score >= 3 and best_score > second_score:
+            return best_role
+    return None
+
+def resolve_training_job_title(detected_role, available_titles):
+    if not detected_role:
+        return None
+    cleaned = [(str(x), clean_input_text(x)) for x in available_titles if str(x).strip()]
+    target = clean_input_text(detected_role)
+    for original, normalized in cleaned:
+        if normalized == target:
+            return original
+    candidates = []
+    target_tokens = set(target.split())
+    for original, normalized in cleaned:
+        if target in normalized or normalized in target:
+            candidates.append((2, len(normalized), original))
+            continue
+        overlap = len(target_tokens.intersection(set(normalized.split())))
+        if overlap >= 2:
+            candidates.append((1, overlap, original))
+    if candidates:
+        candidates.sort(key=lambda x: (-x[0], -x[1], len(x[2]), x[2]))
+        return candidates[0][2]
+    return None
+
 def detect_seniority(text):
     text = clean_input_text(text)
 
@@ -351,18 +470,15 @@ def build_prediction_features(resume_text, job_description, selected_role):
     resume_role = detect_value(
         resume_text,
         RESUME_ROLES,
-        RESUME_ROLES[0] if RESUME_ROLES else ""
+        None
     )
 
-    # The notebook uses the job title detected from the JD. If the selected
-    # UI role exists in the trained job-title vocabulary, use it as a fallback.
-    job_title = detect_value(
-        job_description,
-        JOB_TITLES,
-        selected_role if selected_role in JOB_TITLES else (
-            JOB_TITLES[0] if JOB_TITLES else ""
-        )
-    )
+    # FIX: the JD determines the target role when it contains clear evidence.
+    # If the JD has no identifiable role, the UI selection is used only when it
+    # is an actual training category. There is NEVER a job_titles[0] fallback.
+    detected_job_role = detect_job_role(job_description)
+    effective_job_role = detected_job_role or selected_role or None
+    job_title = resolve_training_job_title(effective_job_role, JOB_TITLES)
 
     resume_industry = detect_value(
         resume_text,
@@ -436,6 +552,8 @@ def build_prediction_features(resume_text, job_description, selected_role):
     }
 
     for column, value in categorical_values.items():
+        if value is None:
+            continue
         encoded_column = f"{column}_{value}"
         if encoded_column in encoded_df.columns:
             encoded_df.loc[0, encoded_column] = 1
@@ -474,7 +592,8 @@ def build_prediction_features(resume_text, job_description, selected_role):
         "extra_skills": extra_skills,
         "skill_match_ratio": match_ratio,
         "resume_role": resume_role,
-        "job_role": job_title,
+        "job_role": detected_job_role or selected_role or "Unknown",
+        "training_job_title": job_title,
         "selected_role": selected_role,
         "resume_seniority": resume_seniority,
         "job_seniority": job_seniority,
@@ -659,10 +778,9 @@ def analyze():
 
     except Exception as error:
         print("\nANALYSIS ERROR:", repr(error))
-
         return jsonify({
             "success": False,
-            "message": f"{type(error).__name__}: {error}",
+            "message": "An error occurred while analyzing the resume.",
             "error": str(error)
         }), 500
 
@@ -676,7 +794,43 @@ GEMINI_MODEL = os.getenv(
     "gemini-3.8-flash"
 )
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+# Load Gemini configuration from the process environment first.
+# If the hosting environment does not provide environment variables,
+# also support a local .env file next to app.py.
+def load_local_env():
+    env_path = os.path.join(BASE_DIR, ".env")
+    if not os.path.exists(env_path):
+        return
+
+    try:
+        with open(env_path, "r", encoding="utf-8") as env_file:
+            for raw_line in env_file:
+                line = raw_line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+
+                key, value = line.split("=", 1)
+                key = key.strip()
+                value = value.strip()
+
+                if (
+                    len(value) >= 2
+                    and value[0] == value[-1]
+                    and value[0] in ('"', "'")
+                ):
+                    value = value[1:-1]
+
+                # Do not overwrite a real hosting environment variable.
+                if key and key not in os.environ:
+                    os.environ[key] = value
+    except Exception as env_error:
+        print(f"Warning: could not read .env file: {env_error}")
+
+
+load_local_env()
+
+# Read the key AFTER loading .env.
+# GEMINI_API_KEY loaded above
 
 gemini_client = None
 if genai is not None and GEMINI_API_KEY:
@@ -1014,13 +1168,17 @@ if __name__ == "__main__":
     print(f"Selected features: {len(SELECTED_COLUMNS)}")
     print(f"GenAI package installed: {genai is not None}")
     print(f"GenAI configured: {bool(GEMINI_API_KEY)}")
+    print(f"GenAI key source: {GEMINI_KEY_SOURCE}")
     print(f"GenAI backend: {'google-genai SDK' if genai is not None else 'Gemini REST API fallback'}")
     print(f"GenAI model: {GEMINI_MODEL}")
+    if not GEMINI_API_KEY:
+        print("WARNING: Gemini API key not found.")
+        print("Add GEMINI_API_KEY to a .env file beside app.py or set it in the hosting environment.")
     print("Server: http://127.0.0.1:5004")
 
     app.run(
         host="0.0.0.0",
-        port=5005,
+        port=5006,
         debug=True,
         use_reloader=False
     )
