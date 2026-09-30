@@ -1,0 +1,3 @@
+28 / 09 / 2026 - NN basics using numpy
+29 / 09 / 2026 - pytorch fundamentals
+30 / 09 / 2026 - Pytorch practice
