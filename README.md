@@ -40,3 +40,30 @@ An end-to-end machine learning application that analyzes the compatibility betwe
 * Web-based application
 
 **Tech Stack:** Python, Pandas, NumPy, Scikit-learn, NLP, Flask, HTML, CSS, JavaScript
+
+## Skills Covered
+
+**Data Science:**
+Data Cleaning, EDA, Feature Engineering, Feature Selection, Data Visualization
+
+**Machine Learning:**
+Regression, Classification, Clustering, Model Evaluation, Hyperparameter Tuning, Scikit-learn
+
+**Development & Tools:**
+Python, SQL, Pandas, NumPy, Matplotlib, Seaborn, Flask, Git, GitHub, Jupyter Notebook, VS Code
+
+## Workflow
+
+**Problem Understanding → Data Preprocessing → EDA → Feature Engineering → Model Development → Evaluation → Deployment**
+
+## Purpose
+
+This repository documents my practical journey in **Machine Learning and Data Science**, with a focus on building end-to-end projects and applying machine learning concepts to real-world problems.
+
+## Author
+
+**Varsha A**
+
+Aspiring Machine Learning Engineer | Python | Machine Learning | Data Science
+
+GitHub: https://github.com/Varshh-hub
