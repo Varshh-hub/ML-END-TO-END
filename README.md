@@ -59,11 +59,3 @@ Python, SQL, Pandas, NumPy, Matplotlib, Seaborn, Flask, Git, GitHub, Jupyter Not
 ## Purpose
 
 This repository documents my practical journey in **Machine Learning and Data Science**, with a focus on building end-to-end projects and applying machine learning concepts to real-world problems.
-
-## Author
-
-**Varsha A**
-
-Aspiring Machine Learning Engineer | Python | Machine Learning | Data Science
-
-GitHub: https://github.com/Varshh-hub
