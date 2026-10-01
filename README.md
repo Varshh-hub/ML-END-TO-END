@@ -44,12 +44,15 @@ An end-to-end machine learning application that analyzes the compatibility betwe
 ## Skills Covered
 
 **Data Science:**
+
 Data Cleaning, EDA, Feature Engineering, Feature Selection, Data Visualization
 
 **Machine Learning:**
+
 Regression, Classification, Clustering, Model Evaluation, Hyperparameter Tuning, Scikit-learn
 
 **Development & Tools:**
+
 Python, SQL, Pandas, NumPy, Matplotlib, Seaborn, Flask, Git, GitHub, Jupyter Notebook, VS Code
 
 ## Workflow
