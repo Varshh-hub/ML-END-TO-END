@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Food Delivery Intelligence | Varsha A
+    </title>
+
+    <meta
+        name="description"
+        content="Food Delivery Analytics, Recommendation and Forecasting System"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="#" class="logo">
+            VARSHA<span>.</span>
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#home">
+                HOME
+            </a>
+
+            <a href="#analytics">
+                ANALYTICS
+            </a>
+
+            <a href="#recommend">
+                RECOMMEND
+            </a>
+
+            <a href="#forecast">
+                FORECAST
+            </a>
+
+        </nav>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
+
+    <a href="#home">HOME</a>
+
+    <a href="#analytics">ANALYTICS</a>
+
+    <a href="#recommend">RECOMMEND</a>
+
+    <a href="#forecast">FORECAST</a>
+
+</div>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-container">
+
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                FOOD DELIVERY / MACHINE LEARNING / ANALYTICS
+            </p>
+
+
+            <h1>
+                Turning food
+                <span>data into decisions.</span>
+            </h1>
+
+
+            <p class="hero-description">
+
+                A complete food delivery intelligence system
+                combining exploratory data analysis,
+                association-rule recommendation and
+                ARIMA-based forecasting.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#recommend"
+                    class="btn btn-primary"
+                >
+                    TRY RECOMMENDER
+                    ↗
+                </a>
+
+
+                <a
+                    href="#forecast"
+                    class="btn btn-outline"
+                >
+                    VIEW FORECAST
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="card-top">
+
+                <span>
+                    MODEL STATUS
+                </span>
+
+                <span class="status-dot">
+                    ● LIVE
+                </span>
+
+            </div>
+
+
+            <div class="hero-number">
+                ML
+            </div>
+
+
+            <p>
+                Apriori + ARIMA
+            </p>
+
+
+            <div class="hero-tags">
+
+                <span>PYTHON</span>
+
+                <span>PANDAS</span>
+
+                <span>MLXTEND</span>
+
+                <span>ARIMA</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECT INTRO
+========================================================= -->
+
+<section class="intro">
+
+    <div class="section-container">
+
+        <p class="section-label">
+            01 / PROJECT
+        </p>
+
+
+        <h2>
+            From raw orders
+            <br>
+            to useful insights.
+        </h2>
+
+
+        <div class="intro-grid">
+
+            <p>
+
+                This project analyzes food delivery
+                transactions to understand customer
+                behavior, popular food combinations,
+                restaurant performance and future
+                demand.
+
+            </p>
+
+
+            <p>
+
+                The system combines data analytics,
+                association-rule mining and time-series
+                forecasting into one interactive
+                application.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ANALYTICS
+========================================================= -->
+
+<section
+    class="analytics-section"
+    id="analytics"
+>
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                02 / ANALYTICS
+            </p>
+
+            <h2>
+                Understand the
+                <span>business.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="analytics-grid">
+
+
+            <div class="analytics-card">
+
+                <p class="card-label">
+                    ANALYSIS
+                </p>
+
+                <h3>
+                    Customer
+                    Behaviour
+                </h3>
+
+                <p>
+                    Discover purchasing patterns
+                    and food combinations from
+                    historical transactions.
+                </p>
+
+            </div>
+
+
+            <div class="analytics-card featured">
+
+                <p class="card-label">
+                    MACHINE LEARNING
+                </p>
+
+                <h3>
+                    Association
+                    Rules
+                </h3>
+
+                <p>
+                    Apriori identifies relationships
+                    between food items using
+                    support, confidence and lift.
+                </p>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <p class="card-label">
+                    FORECASTING
+                </p>
+
+                <h3>
+                    Future
+                    Demand
+                </h3>
+
+                <p>
+                    ARIMA predicts upcoming
+                    monthly orders and sales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="chart-wrapper">
+
+            <div class="chart-header">
+
+                <div>
+
+                    <p class="card-label">
+                        ARIMA MODEL
+                    </p>
+
+                    <h3>
+                        Next 3 Months Forecast
+                    </h3>
+
+                </div>
+
+                <span class="model-badge">
+                    ARIMA (1,1,1)
+                </span>
+
+            </div>
+
+
+            <canvas
+                id="forecastChart"
+            ></canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RECOMMENDATION
+========================================================= -->
+
+<section
+    class="recommend-section"
+    id="recommend"
+>
+
+    <div class="section-container">
+
+        <p class="section-label">
+            03 / RECOMMENDATION ENGINE
+        </p>
+
+
+        <div class="recommend-grid">
+
+
+            <div class="recommend-text">
+
+                <h2>
+                    What goes well
+                    <span>with it?</span>
+                </h2>
+
+
+                <p>
+
+                    Enter a food item and the trained
+                    Apriori association-rule model will
+                    identify related food items.
+
+                </p>
+
+
+                <div class="tech-list">
+
+                    <span>APRIORI</span>
+
+                    <span>SUPPORT</span>
+
+                    <span>CONFIDENCE</span>
+
+                    <span>LIFT</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="recommend-box">
+
+                <label for="foodInput">
+                    ENTER FOOD ITEM
+                </label>
+
+
+                <div class="search-row">
+
+                    <input
+                        type="text"
+                        id="foodInput"
+                        placeholder="Example: Burger"
+                    >
+
+
+                    <button
+                        id="recommendButton"
+                    >
+                        FIND
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="recommendMessage"
+                    class="message"
+                ></p>
+
+
+                <div
+                    id="recommendations"
+                    class="recommendations"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FORECAST
+========================================================= -->
+
+<section
+    class="forecast-section"
+    id="forecast"
+>
+
+    <div class="section-container">
+
+        <p class="section-label">
+            04 / FORECASTING
+        </p>
+
+
+        <h2>
+            Looking ahead with
+            <span>ARIMA.</span>
+        </h2>
+
+
+        <div
+            id="forecastCards"
+            class="forecast-cards"
+        ></div>
+
+
+        <div class="forecast-note">
+
+            <strong>
+                MODEL:
+            </strong>
+
+            ARIMA (1, 1, 1)
+
+            <span></span>
+
+            Forecast horizon:
+            3 months
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     METHODOLOGY
+========================================================= -->
+
+<section class="method-section">
+
+    <div class="section-container">
+
+        <p class="section-label">
+            05 / METHODOLOGY
+        </p>
+
+
+        <div class="method-grid">
+
+
+            <div>
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    Data Cleaning
+                </h3>
+
+                <p>
+                    Missing values, duplicate
+                    records and date formatting.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    EDA
+                </h3>
+
+                <p>
+                    Revenue, orders, restaurants,
+                    customers and city analysis.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    Apriori
+                </h3>
+
+                <p>
+                    Frequent itemsets and
+                    association rules.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    04
+                </span>
+
+                <h3>
+                    ARIMA
+                </h3>
+
+                <p>
+                    Monthly order and sales
+                    forecasting.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+
+            <div class="footer-logo">
+                VARSHA<span>.</span>
+            </div>
+
+            <p>
+                Food Delivery Analytics,
+                Recommendation & Forecasting
+            </p>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <p>
+                Designed & Developed by Varsha A
+            </p>
+
+            <p>
+                © 2026 All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script src="/script.js"></script>
+
+</body>
+
+</html>
