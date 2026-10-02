@@ -1,7 +1,10 @@
 Flask==3.1.2
 pandas==2.3.3
 numpy==2.3.3
-openpyxl==3.1.5
+scikit-learn==1.7.2
 mlxtend==0.23.4
 statsmodels==0.14.5
-scikit-learn==1.7.2
+matplotlib==3.11.2
+openpyxl==3.1.5
+joblib==1.6.0
+gunicorn
