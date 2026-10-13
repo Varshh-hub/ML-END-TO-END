@@ -1,6 +1,7 @@
 # ML-END-TO-END
 
 A collection of end-to-end **Machine Learning projects** built to develop practical skills in data preprocessing, exploratory data analysis, feature engineering, model development, evaluation, and deployment.
+
 ---
 ###  Deployment Notice
 
@@ -12,6 +13,7 @@ The live deployment is currently not working as expected. However, you can still
 3. Follow the setup instructions provided in this README to install the required dependencies and run the application locally.
 
 Thank you for your understanding! 
+
 ---
 
 ## Author
